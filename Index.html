@@ -18,22 +18,19 @@
   <pre id="answer">ผลลัพธ์จะแสดงที่นี่...</pre>
 
   <script>
-    const apiKey = 'AIzaSyBJSk9SYiqXrCA8xCoUJHKQ8t7K0DSIGOk'; // ใส่ Google Cloud Gemini API Key
-    const apiUrl = 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=' + apiKey;
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbz4-0fi6nXUAWGTPSe_gitHT4v2CF-O-A5r-ZFYUXNye8H5Q7pdvkKtgHOtgLh8O7l2lw/exec"; // เปลี่ยนเป็นของคุณ
 
-    async function askGemini() {
-      const question = document.getElementById("question").value;
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: question }] }]
-        })
-      });
-      const data = await res.json();
-      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "ไม่ได้รับคำตอบ";
-      document.getElementById("answer").textContent = answer;
-    }
+async function askGemini() {
+  const question = document.getElementById("question").value;
+  const res = await fetch(scriptUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: question })
+  });
+
+  const answer = await res.text(); // เพราะ Apps Script return เป็น plain text
+  document.getElementById("answer").textContent = answer;
+}
   </script>
 </body>
 </html>
