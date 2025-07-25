@@ -20,12 +20,12 @@
   <script>
     const scriptUrl = "https://script.google.com/macros/s/AKfycbz4-0fi6nXUAWGTPSe_gitHT4v2CF-O-A5r-ZFYUXNye8H5Q7pdvkKtgHOtgLh8O7l2lw/exec"; // เปลี่ยนเป็นของคุณ
 
-async function askGemini() {
-  const question = document.getElementById("question").value;
-  const res = await fetch(scriptUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: question })
+  async function askGemini() {
+    const question = document.getElementById("question").value;
+    const res = await fetch(scriptUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: question })
   });
 
   const answer = await res.text(); // เพราะ Apps Script return เป็น plain text
