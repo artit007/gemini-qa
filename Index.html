@@ -19,7 +19,7 @@
 
   <script>
     const apiKey = 'AIzaSyBJSk9SYiqXrCA8xCoUJHKQ8t7K0DSIGOk'; // ใส่ Google Cloud Gemini API Key
-    const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey;
+    const apiUrl = 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=' + apiKey;
 
     async function askGemini() {
       const question = document.getElementById("question").value;
